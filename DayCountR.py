@@ -3,7 +3,7 @@
 PLUGIN_METADATA = {
     'id': 'day_count_reforged',
     'version': '1.0.0',
-    'name': 'DaycountR',
+    'name': 'DayCountR',
     'description': '',
     'author': [
         'Van_Involution',  # Reforged to fit MCDR 1.x
