@@ -4,7 +4,7 @@ from yaml import load, FullLoader
 from datetime import date
 from pathlib import Path
 
-from mcdreforged.api.types import ServerInterface, CommandSource
+from mcdreforged.api.types import ServerInterface
 from mcdreforged.api.command import Literal
 
 PLUGIN_METADATA = {
@@ -50,14 +50,14 @@ def get_day_count(start_date: date):
     return (today_date - start_date).days
 
 
-def reply_msg(src: CommandSource):
-    config = get_config(src.get_server())
+def format_reply_msg(server: ServerInterface):  # You can call this function in other modules
+    config = get_config(server)
     day_count = get_day_count(config['start_date'])
-    src.reply(config['reply_msg'].format(days=day_count))
+    return config['reply_msg'].format(days=day_count)
 
 
 def on_load(server: ServerInterface, prev):
     server.register_help_message(prefix='!!days', message='Get day count since server set up')
     server.register_command(
-        Literal('!!days').runs(reply_msg)
+        Literal('!!days').runs(lambda src: src.reply(format_reply_msg(server)))
     )
