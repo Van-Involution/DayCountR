@@ -32,7 +32,7 @@ start_date: {today}
 
 # Customize your reply msg to cmd-src, use {{days}} as format key
 # 自定义回复消息，用 {{days}} 作为格式化键名
-reply_msg: Today, server has been set up for \u00a7e{{days}}\u00a7r days!
+reply_msg: Today, server has been set up for §e{{days}}§r days!
 '''.format(today=date.today().strftime('%Y-%m-%d'))
 
 
