@@ -45,19 +45,15 @@ def get_config(server: ServerInterface):
         return load(stream=cfg, Loader=FullLoader)
 
 
-def get_day_count(start_date: date):
-    today_date = date.today()
-    return (today_date - start_date).days
-
-
-def format_reply_msg(server: ServerInterface):  # You can call this function in other modules
+def get_day_count(server: ServerInterface):  # You can call this function in other modules
     config = get_config(server)
-    day_count = get_day_count(config['start_date'])
-    return config['reply_msg'].format(days=day_count)
+    today_date = date.today()
+    start_date = config['start_date']
+    return config['reply_msg'].format(days=(today_date - start_date).days)
 
 
 def on_load(server: ServerInterface, prev):
     server.register_help_message(prefix='!!days', message='Get day count since server set up')
     server.register_command(
-        Literal('!!days').runs(lambda src: src.reply(format_reply_msg(server)))
+        Literal('!!days').runs(lambda src: src.reply(get_day_count(server)))
     )
