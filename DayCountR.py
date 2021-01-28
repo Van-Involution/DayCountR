@@ -25,12 +25,13 @@ PLUGIN_METADATA = {
 NAME = PLUGIN_METADATA['name']
 DEFAULT_CONFIG_PATH = f'config/{NAME}.yml'
 DEFAULT_CONFIG = '''# Configure file for DayCountR
+# Check https://github.com/Van-Involution/DayCountR for detail
 
-# Date when server set up like "YYYY-MM-DD"
-# 开服日期，形如 “YYYY-MM-DD”
+# Date of server set up like "YYYY-MM-DD"
+# 开服日期，形如 “1919-08-10”
 start_date: {today}
 
-# Customize your reply msg to cmd-src, use {{days}} as format key
+# Customize reply message, use {{days}} as format key
 # 自定义回复消息，用 {{days}} 作为格式化键名
 reply_msg: Today, server has been set up for §e{{days}}§r days!
 '''.format(today=date.today().strftime('%Y-%m-%d'))
@@ -48,8 +49,8 @@ def get_config(server: ServerInterface):
 def get_day_count(server: ServerInterface):  # You can call this function in other modules
     config = get_config(server)
     today_date = date.today()
-    start_date = config['start_date']
-    return config['reply_msg'].format(days=(today_date - start_date).days)
+    start_date = config.get('start_date', today_date)
+    return config.get('reply_msg', 'Today, server has been set up for §e{days}§r days!').format(days=(today_date - start_date).days)
 
 
 def on_load(server: ServerInterface, prev):
