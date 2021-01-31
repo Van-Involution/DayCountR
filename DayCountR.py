@@ -53,8 +53,10 @@ def get_config(server: ServerInterface):
 
 
 def get_day_count(server: ServerInterface):  # You can call this function in other modules
-    if (config := get_config(server)) is not None:
-        start_date = config.get('start_date', (today_date := date.today()))
+    config = get_config(server)
+    if config is not None:
+        today_date = date.today()
+        start_date = config.get('start_date', today_date)
         return RText(
             config.get('reply_msg', 'Today, server has been set up for §e{days}§r days!')
             .format(days=(today_date - start_date).days)
