@@ -9,7 +9,7 @@ from mcdreforged.api.rtext import RText
 
 PLUGIN_METADATA = {
     'id': 'day_count_reforged',
-    'version': '1.0.0',
+    'version': '1.0.1',
     'name': 'DayCountR',
     'description': 'Use command "!!days" to get day count since server set up',
     'author': [
@@ -28,11 +28,9 @@ DEFAULT_CONFIG = '''# Configure file for DayCountR
 # Check https://github.com/Van-Involution/DayCountR for detail
 
 # Date of server set up like "YYYY-MM-DD"
-# 开服日期，形如 “1919-08-10”
 start_date: {today}
 
 # Customize reply message, use {{days}} as format key
-# 自定义回复消息，用 {{days}} 作为格式化键名
 reply_msg: Today, server has been set up for §e{{days}}§r days!
 '''.format(today=date.today().strftime('%Y-%m-%d'))
 
@@ -52,7 +50,7 @@ def get_config(server: ServerInterface):
             return load(cfg, FullLoader)
 
 
-def get_day_count(server: ServerInterface):  # You can call this function in other modules
+def get_day_count(server: ServerInterface):
     config = get_config(server)
     if config is not None:
         today_date = date.today()
