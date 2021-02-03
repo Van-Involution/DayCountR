@@ -4,7 +4,7 @@
 
 > **注意**：DayCountR 基于 [**MCDR v1.x**](https://github.com/Fallen-Breath/MCDReforged) 开发，并且**不支持** MCDR v0.x
 
-**DayCountR** 是一个 MCDR 插件,由 [Fallen_Breath](https://github.com/Fallen-Breath)/[**daycount**](https://github.com/TISUnion/daycount) 重制而成, 提供获取开服天数的 `!!days` 命令，以及对应函数 `get_day_count()`。
+**DayCountR** 是一个 MCDR 插件，由 [Fallen_Breath](https://github.com/Fallen-Breath)/[**daycount**](https://github.com/TISUnion/daycount) 重制而成，提供获取开服天数的 `!!days` 命令，以及对应函数 `get_day_count()`。
 
 使用配置文件 `config/DayCountR.yml`，可设置服务器的 **开服日期**，并自定义服务端**回复的消息**。
 
