@@ -30,7 +30,7 @@ plugin_directories:
 
 ### 配置
 
-插件在生成回复消息时会读取路径为 `cinfig/DayCountR.yml` 配置文件，若找不到配置文件，则写入如下的默认配置文件内容：
+插件在生成回复消息时会读取路径为 `cinfig/DayCountR.yml` 的配置文件，若找不到配置文件，则写入如下的默认配置文件内容：
 
 ```YAML
 # Configure file for DayCountR
