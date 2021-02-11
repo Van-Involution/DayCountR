@@ -11,7 +11,7 @@ from mcdreforged.api.rtext import RText
 
 PLUGIN_METADATA = {
     'id': 'day_count_reforged',
-    'version': '1.0.1',
+    'version': '1.0.2',
     'name': 'DayCountR',
     'description': 'Use command "!!days" to get day count since server set up',
     'author': [
