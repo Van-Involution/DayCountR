@@ -34,6 +34,10 @@ start_date: {today}
 reply_msg: Today, server has been set up for §e{{days}}§r days!
 '''.format(today=date.today().strftime('%Y-%m-%d'))
 
+config: dict
+today_date: date
+start_date: date
+
 
 def get_config(server: ServerInterface):
     if not Path(DEFAULT_CONFIG_PATH).is_file():
@@ -44,18 +48,31 @@ def get_config(server: ServerInterface):
         return load(cfg, Loader)
 
 
-def get_day_count(server: ServerInterface):
-    config = get_config(server)
+def getday():
+    """
+    An API for https://github.com/eagle3236/joinMOTD_Plus
+
+    :return: A string shows days from server setup
+    """
+    global config, today_date, start_date
     today_date = date.today()
     start_date = config.get('start_date', today_date)
+    return str((today_date - start_date).days)
+
+
+def get_day_count():
+    global config, today_date, start_date
+    days = getday()
     return RText(
         config.get('reply_msg', 'Today, server has been set up for §e{days}§r days!')
-        .format(days=(today_date - start_date).days)
+        .format(days=days)
     ).h(f'§l{start_date}§r -> §l{today_date}§r')
 
 
 def on_load(server: ServerInterface, prev):
+    global config
+    config = get_config(server)
     server.register_help_message('!!days', 'Get day count since server set up')
     server.register_command(
-        Literal('!!days').runs(lambda src: src.reply(get_day_count(server)))
+        Literal('!!days').runs(lambda src: src.reply(get_day_count()))
     )
