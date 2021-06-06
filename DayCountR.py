@@ -8,7 +8,7 @@ PLUGIN_METADATA = {
     'id': 'day_count_reforged',
     'version': '1.0.3',
     'name': 'DayCountR',
-    'description': 'Use command "!!days" to get day count since server set up',
+    'description': 'Use command "!!day" to get day count since server set up',
     'author': [
         'Van_Nya',  # Reforged to fit MCDR 1.x
         'Fallen_Breath'  # Source of inspiration
