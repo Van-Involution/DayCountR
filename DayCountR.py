@@ -2,7 +2,7 @@ from datetime import datetime
 
 from mcdreforged.api.types import ServerInterface
 from mcdreforged.api.command import Literal
-from mcdreforged.api.rtext import RText
+from mcdreforged.api.rtext import RTextBase, RText
 
 PLUGIN_METADATA = {
     'id': 'day_count_reforged',
@@ -41,7 +41,7 @@ class GetDayCount:
     def days(self) -> str:
         return str((self.today_date - self.start_date).days)
 
-    def __call__(self) -> RText:
+    def __call__(self) -> RTextBase:
         return RText(self.reply_msg.format(self.days))\
             .h(f'§l{self.start_date.date()}§r -> §l{self.today_date.date()}§r')
 
@@ -55,7 +55,7 @@ def getday() -> str:
     return GetDayCount().days
 
 
-def get_day_count() -> RText:
+def get_day_count() -> RTextBase:
     """
     An API for https://github.com/Van-Nya/JoinMOTDR
 
