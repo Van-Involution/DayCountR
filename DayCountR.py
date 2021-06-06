@@ -13,10 +13,10 @@ PLUGIN_METADATA = {
     'name': 'DayCountR',
     'description': 'Use command "!!days" to get day count since server set up',
     'author': [
-        'Van_Involution',  # Reforged to fit MCDR 1.x
+        'Van_Nya',  # Reforged to fit MCDR 1.x
         'Fallen_Breath'  # Source of inspiration
     ],
-    'link': 'https://github.com/Van-Involution/DayCountR',
+    'link': 'https://github.com/Van-Nya/DayCountR',
     'dependencies': {
         'mcdreforged': '>=1.0.0',
     }
