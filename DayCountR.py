@@ -55,6 +55,15 @@ def getday() -> str:
     return GetDayCount().days
 
 
+def get_day_count() -> RText:
+    """
+    An API for https://github.com/Van-Nya/JoinMOTDR
+
+    :return: A formatted RText object
+    """
+    return GetDayCount()()
+
+
 def on_load(server: ServerInterface, prev):
     server.register_help_message('!!day', '显示开服至今的天数')
     server.register_command(
