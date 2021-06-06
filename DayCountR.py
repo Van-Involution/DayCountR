@@ -43,7 +43,7 @@ class GetDayCount:
 
     def __call__(self) -> RText:
         return RText(self.reply_msg.format(self.days))\
-            .h(f'§l{self.start_date}§r -> §l{self.today_date}§r')
+            .h(f'§l{self.start_date.date()}§r -> §l{self.today_date.date()}§r')
 
 
 def getday() -> str:
